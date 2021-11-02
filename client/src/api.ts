@@ -1,11 +1,4 @@
-
-
 const API_URL = 'http://localhost:3000';
-
-interface PlayerData {
-  id: string;
-  name: string;
-}
 
 export const getPlayer = (id: string): Promise<PlayerData> => {
   return fetch(`${API_URL}/player/${id}`)
