@@ -1,6 +1,7 @@
 const cuid = require('cuid');
 const express = require('express');
-const bodyParser = require('body-parser')
+const bodyParser = require('body-parser');
+const faker = require('faker');
 const app = express();
 
 /* Setup express middlewares */
@@ -18,10 +19,22 @@ app.delete('/player/:id', deletePlayer);
 app.listen(3000, () => console.log('app listening on port 3000.'))
 
 /* The mock 'database' */
+const EXTRA_PLAYERS = 50;
+
 let players = [
-  { id: 'cjeodaus60000poul1g030oia', name: 'Richard Garfield' },
-  { id: 'cjeodaus60001poule3wjdz1p', name: 'Gabe Newell' },
+  { id: 'cjeodaus60000poul1g030oia', name: 'Richard Garfield', image: 'https://upload.wikimedia.org/wikipedia/commons/4/43/Richard_Garfield_%28Spiel_2014_cropped%29.jpg'},
+  { id: 'cjeodaus60001poule3wjdz1p', name: 'Gabe Newell', image: 'https://pbs.twimg.com/profile_images/415945285517328384/8Occ-B_Y.png' },
 ];
+
+for (let i = 0; i < EXTRA_PLAYERS; i++) {
+  players.push({
+    id: cuid(),
+    name: faker.name.findName(),
+    image: faker.image.avatar()
+  })
+}
+
+console.log(players)
 
 /* IMPLEMENTATION DETAILS */
 

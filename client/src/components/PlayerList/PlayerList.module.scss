@@ -1,0 +1,42 @@
+.container {
+  height: 100%;
+}
+
+.list {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+
+  a {
+    color: inherit;
+    text-decoration: none;
+    font-weight: 600;
+  }
+}
+
+.item {
+  padding: 10px;
+
+  border-bottom: 1px solid #303030;
+  cursor: pointer;
+
+  display: flex;
+  align-items: center;
+
+  &:hover {
+    background-color: #303030;
+  }
+
+  img {
+    object-fit: cover;
+    border-radius:50%;
+    width: 40px;
+    height: 40px;
+
+    //border: 1px solid #686868;
+  }
+
+  span {
+    margin-left: 10px;
+  }
+}
