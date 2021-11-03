@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 interface PlayerListItemProps {
   data: PlayerData;
@@ -7,7 +8,9 @@ interface PlayerListItemProps {
 export const PlayerListItem = ({ data }: PlayerListItemProps) => {
   return (
     <li>
-        {data.id} {data.name}
+      <Link to={`/player/${data.id}`}>
+        {data.name}
+      </Link>
     </li>
   );
 }

@@ -1,0 +1,19 @@
+.app {
+  height: 100%;
+  width: 100%;
+  overflow: auto;
+  background: rgb(2,0,36);
+  background: linear-gradient(0deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 35%, rgba(45,178,189,1) 100%);
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.container {
+  width: 40%;
+  height: 80%;
+  margin: 0 auto;
+
+  background-color: #5c5c5c;
+}
