@@ -26,8 +26,7 @@ export const PlayerListItem = ({ data }: PlayerListItemProps) => {
   return (
     <Link to={`/player/${data.id}`}>
       <li className={styles.item}>
-          <img src={data.image} />
-        
+        <img src={data.image} alt="avatar" />
         <span>
           {data.name}
         </span>
