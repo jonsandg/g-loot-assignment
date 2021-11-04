@@ -1,4 +1,4 @@
-$base-color: #EA4C89;
+$base-color: #b6b6b6;
 $green-color: #00FF80;
 
 .button {
@@ -6,11 +6,11 @@ $green-color: #00FF80;
   border-radius: 8px;
   border-style: none;
   box-sizing: border-box;
-  color: #FFFFFF;
+  color: rgb(56, 56, 56);
   cursor: pointer;
   display: inline-block;
   font-size: 14px;
-  font-weight: 500;
+  font-weight: 600;
   height: 40px;
   line-height: 20px;
   list-style: none;
@@ -28,7 +28,7 @@ $green-color: #00FF80;
 
   &:hover,
   &:focus {
-    background-color: lighten($base-color, 10);  
+    background-color: darken($base-color, 10);  
   }
 }
 

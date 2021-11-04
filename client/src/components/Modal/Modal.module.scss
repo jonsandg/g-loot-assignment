@@ -1,0 +1,42 @@
+.overlay {
+  position: fixed;
+  inset: 0px;
+  background-color: rgba(15, 15, 15, 0.705);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal {
+  background-color: #424242;
+  width: 400px;
+
+  border-radius: 10px;
+  border: 2px solid #303030;
+}
+
+.title {
+  border-bottom: 1px solid #303030;
+  padding: 10px;
+
+  h2 {
+    margin: 0;
+  }
+}
+
+.content {
+  padding: 10px;
+}
+
+.actions {
+  padding: 10px;
+  border-top: 1px solid #303030;
+  display: flex;
+  justify-content: right;
+
+  button {
+    margin-left: 10px;
+    min-width: 5em;
+  }
+}
