@@ -56,7 +56,7 @@ const PlayersPage = () => {
         />
         <Button
           color="green"
-          icon="add-r"
+          icon="user-add"
           onClick={() => setModalIsOpen(true)}
         />
       </div>

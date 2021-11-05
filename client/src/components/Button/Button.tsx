@@ -4,7 +4,7 @@ import cn from 'classnames';
 
 interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement>{
   color?: 'red' | 'green';
-  icon?: 'add-r' | 'arrow-left' | 'trash' | 'pen' | 'close' | 'check';
+  icon?: 'add-r' | 'arrow-left' | 'trash' | 'pen' | 'close' | 'check' | 'user-add';
   transparent?: boolean;
 }
 
