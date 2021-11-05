@@ -5,15 +5,18 @@ import logo from 'images/gloot-logo.png';
 
 import { PlayerList } from 'components/PlayerList';
 import { Button } from 'components/Button';
+import { TextInput } from 'components/TextInput';
 import { Modal } from 'components/Modal';
 
-import { getAllPlayers } from 'api';
+import { getAllPlayers, addPlayer } from 'api';
 
 const PlayersPage = () => {
 
   const [players, setPlayers] = useState<PlayerData[]>([]);
   const [filterQuery, setFilterquery] = useState('');
+  
   const [modalIsOpen, setModalIsOpen] = useState(false);
+  const [newPlayerName, setNewPlayerName] = useState('');
 
   useEffect(() => {
     getAllPlayers()
@@ -21,6 +24,17 @@ const PlayersPage = () => {
         setPlayers(data);
       })
   }, []);
+
+  const onNewPlayerSubmit = () => {
+    if (!newPlayerName) {
+      return;
+    }
+    return addPlayer(newPlayerName)
+      .then(player => {
+        setPlayers([player, ...players]);
+        setModalIsOpen(false);
+      });
+  }
 
   const filteredPlayers = players.filter(p => p.name.toLowerCase().includes(filterQuery.toLowerCase()));
 
@@ -33,15 +47,14 @@ const PlayersPage = () => {
         </h1>
       </div>
       <div className={styles.searchContainer}>
-        <input 
-          type="text" 
-          placeholder="Search..." 
+        <TextInput
+          placeholder="Search..."
           value={filterQuery}
           onChange={e => setFilterquery(e.target.value)}
         />
-        <Button 
-          color="green" 
-          icon="add" 
+        <Button
+          color="green"
+          icon="add"
           onClick={() => setModalIsOpen(true)}
         />
       </div>
@@ -53,11 +66,21 @@ const PlayersPage = () => {
         onRequestClose={() => setModalIsOpen(false)}
         title="Add New Player"
         actions={[
-          <Button color="green">Add</Button>, 
+          <Button 
+            color="green" 
+            disabled={!newPlayerName}
+            onClick={() => onNewPlayerSubmit()}
+          >
+            Add
+          </Button>,
           <Button onClick={() => setModalIsOpen(false)}>Cancel</Button>
         ]}
       >
-        <p>Contenz</p>
+        <TextInput
+          placeholder="Name"
+          value={newPlayerName}
+          onChange={e => setNewPlayerName(e.target.value)}
+        />
       </Modal>
     </div>
   );

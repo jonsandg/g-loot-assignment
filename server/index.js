@@ -60,8 +60,8 @@ function addPlayer(req, res) {
   if (!name) {
     return res.status(401).end()
   }
-  const newPlayer = { id: cuid(), name };
-  players = [...players, newPlayer];
+  const newPlayer = { id: cuid(), name, image: faker.image.avatar() };
+  players = [newPlayer, ...players];
   return res.status(201).json(newPlayer).end();
 }
 /* Delete a player from the list

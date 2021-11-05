@@ -2,7 +2,7 @@ import React from 'react';
 import styles from './Button.module.scss';
 import cn from 'classnames';
 
-interface ButtonProps extends React.HTMLAttributes<HTMLButtonElement>{
+interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement>{
   color?: 'red' | 'green';
   icon?: 'add';
 }
