@@ -19,7 +19,7 @@ app.delete('/player/:id', deletePlayer);
 app.listen(3000, () => console.log('app listening on port 3000.'))
 
 /* The mock 'database' */
-const EXTRA_PLAYERS = 50;
+const EXTRA_PLAYERS = 15;
 
 let players = [
   { id: 'cjeodaus60000poul1g030oia', name: 'Richard Garfield', image: 'https://upload.wikimedia.org/wikipedia/commons/4/43/Richard_Garfield_%28Spiel_2014_cropped%29.jpg'},
@@ -33,8 +33,6 @@ for (let i = 0; i < EXTRA_PLAYERS; i++) {
     image: faker.image.avatar()
   })
 }
-
-console.log(players)
 
 /* IMPLEMENTATION DETAILS */
 
