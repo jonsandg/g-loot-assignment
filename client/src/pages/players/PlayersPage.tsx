@@ -32,8 +32,13 @@ const PlayersPage = () => {
     return addPlayer(newPlayerName)
       .then(player => {
         setPlayers([player, ...players]);
-        setModalIsOpen(false);
+        onCloseModal();
       });
+  }
+
+  const onCloseModal = () => {
+    setModalIsOpen(false);
+    setNewPlayerName('');
   }
 
   const filteredPlayers = players.filter(p => p.name.toLowerCase().includes(filterQuery.toLowerCase()));
@@ -58,7 +63,7 @@ const PlayersPage = () => {
       </div>
       <Modal
         isOpen={modalIsOpen}
-        onRequestClose={() => setModalIsOpen(false)}
+        onRequestClose={() => onCloseModal()}
         title="Add New Player"
         actions={[
           <Button 
@@ -68,7 +73,7 @@ const PlayersPage = () => {
           >
             Add
           </Button>,
-          <Button onClick={() => setModalIsOpen(false)}>Cancel</Button>
+          <Button onClick={() => onCloseModal()}>Cancel</Button>
         ]}
       >
         <TextInput

@@ -1,12 +1,13 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { useParams, useHistory } from 'react-router-dom';
 import styles from './PlayerPage.module.scss';
-import { getPlayer, deletePlayer } from 'api';
+import { getPlayer, deletePlayer, updatePlayer } from 'api';
 
 import { Header } from 'components/Header';
 import { Button } from 'components/Button';
 import { Modal } from 'components/Modal';
+import { TextInput } from 'components/TextInput';
 
 type RouteParams = {
   id: string;
@@ -16,6 +17,11 @@ const PlayerPage = () => {
 
   const [player, setPlayer] = useState<PlayerData>();
   const [modalIsOpen, setModalIsOpen] = useState(false);
+  
+  const [editingName, setEditingName] = useState(false);
+  const [newName, setNewName] = useState('');
+
+  const nameInputRef = useRef<HTMLInputElement>(null);
 
   const { id } = useParams<RouteParams>();
   const history = useHistory();
@@ -36,6 +42,30 @@ const PlayerPage = () => {
       });
   }
 
+  const startEditName = () => {
+    if (!player) {
+      return;
+    }
+    setNewName(player.name);
+    setEditingName(true);
+  }
+
+  const onCancelEditName = () => {
+    setNewName('');
+    setEditingName(false);
+  }
+
+  const onNewNameSubmit = () => {
+    if(!player || !newName) {
+      return;
+    }
+    updatePlayer(player.id, newName)
+    .then(player => {
+      setPlayer(player);
+      onCancelEditName()
+    })
+  }
+
   if(!player) {
     return null;
   }
@@ -50,15 +80,43 @@ const PlayerPage = () => {
         <Button 
           icon="trash" 
           color="red" 
-          onClick={() => setModalIsOpen(true)}
+          onClick={onCancelEditName}
         />
       </div>
       <div className={styles.playerContainer}>
         <div className={styles.playerInfo}>
           <img src={player.image} alt="avatar" />
-          <div>
-            <h2>{player.name}</h2>
-          </div>
+          
+            {editingName ? (
+              <div className={styles.playerName}>
+                <TextInput 
+                  value={newName}
+                  onChange={e => setNewName(e.target.value)}
+                  ref={nameInputRef}
+                  onMounted={() => nameInputRef.current?.focus()}
+                  onFocus={e => e.target.select()}
+                />
+                <Button 
+                  icon="check" 
+                  color="green"
+                  onClick={onNewNameSubmit}
+                />
+                <Button 
+                  icon="close"
+                  onClick={() => onCancelEditName()} 
+                />
+              </div>
+            ) : (
+              <div className={styles.playerName}>
+                <h2>{player.name}</h2>
+                <Button 
+                  transparent 
+                  icon="pen" 
+                  onClick={startEditName}
+                />
+              </div>
+            )}
+            
         </div>
       </div>
       <Modal

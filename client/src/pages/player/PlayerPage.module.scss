@@ -35,3 +35,25 @@
     border: 5px solid #8a7676;
   }
 }
+
+.playerName {
+
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+
+  h2 {
+    margin-right: 3px;
+  }
+
+  input {
+    font-size: 1.5em;
+    font-weight: bold;
+    border-radius: 5px;
+    padding: 5px 0;
+  }
+
+  button {
+    margin-left: 5px;
+  }
+}

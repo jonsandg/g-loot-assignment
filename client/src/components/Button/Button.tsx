@@ -4,16 +4,18 @@ import cn from 'classnames';
 
 interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement>{
   color?: 'red' | 'green';
-  icon?: 'add-r' | 'arrow-left' | 'trash';
+  icon?: 'add-r' | 'arrow-left' | 'trash' | 'pen' | 'close' | 'check';
+  transparent?: boolean;
 }
 
-export const Button = ({ color, children, icon, className, ...rest }: ButtonProps) => {
+export const Button = ({ color, children, icon, transparent, className, ...rest }: ButtonProps) => {
 
   const buttonStyles = cn(
     styles.button,
     className,
     color && styles[color],
     { [styles.iconButton]: icon && !children },
+    { [styles.transparent] : transparent }
   );
 
   return (
