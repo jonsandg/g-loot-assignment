@@ -80,7 +80,7 @@ const PlayerPage = () => {
         <Button 
           icon="trash" 
           color="red" 
-          onClick={onCancelEditName}
+          onClick={() => setModalIsOpen(true)}
         />
       </div>
       <div className={styles.playerContainer}>

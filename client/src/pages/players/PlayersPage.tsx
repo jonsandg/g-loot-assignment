@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 
 import styles from './PlayersPage.module.scss';
 
@@ -17,6 +17,8 @@ const PlayersPage = () => {
   
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [newPlayerName, setNewPlayerName] = useState('');
+
+  const newPlayerNameInputRef = useRef<HTMLInputElement>()
 
   useEffect(() => {
     getAllPlayers()
@@ -80,6 +82,8 @@ const PlayersPage = () => {
           placeholder="Name"
           value={newPlayerName}
           onChange={e => setNewPlayerName(e.target.value)}
+          ref={newPlayerNameInputRef}
+          onMounted={() => newPlayerNameInputRef.current?.focus()}
         />
       </Modal>
     </div>
