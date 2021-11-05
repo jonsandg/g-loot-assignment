@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react';
 
 import styles from './PlayersPage.module.scss';
-import logo from 'images/gloot-logo.png';
 
 import { PlayerList } from 'components/PlayerList';
 import { Button } from 'components/Button';
 import { TextInput } from 'components/TextInput';
 import { Modal } from 'components/Modal';
+import { Header } from 'components/Header';
 
 import { getAllPlayers, addPlayer } from 'api';
 
@@ -40,12 +40,7 @@ const PlayersPage = () => {
 
   return (
     <div className={styles.container}>
-      <div className={styles.header}>
-        <img src={logo} alt="G-Loot logo" />
-        <h1>
-          G-Loot Player Directory
-        </h1>
-      </div>
+      <Header />
       <div className={styles.searchContainer}>
         <TextInput
           placeholder="Search..."
@@ -54,7 +49,7 @@ const PlayersPage = () => {
         />
         <Button
           color="green"
-          icon="add"
+          icon="add-r"
           onClick={() => setModalIsOpen(true)}
         />
       </div>

@@ -1,0 +1,21 @@
+.header {
+
+  flex: 0 1 auto;
+
+  padding: 10px;
+  
+  display: flex;
+  align-items: center;
+
+  border-bottom: 1px solid #303030;
+
+  h1 {
+    display: inline;
+    font-size: 1.5em;
+    padding-left: 10px;
+  }
+
+  img {
+    height: 50px;
+  }
+}

@@ -4,7 +4,7 @@ import cn from 'classnames';
 
 interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement>{
   color?: 'red' | 'green';
-  icon?: 'add';
+  icon?: 'add-r' | 'arrow-left' | 'trash';
 }
 
 export const Button = ({ color, children, icon, className, ...rest }: ButtonProps) => {
@@ -12,12 +12,13 @@ export const Button = ({ color, children, icon, className, ...rest }: ButtonProp
   const buttonStyles = cn(
     styles.button,
     className,
-    color && styles[color]
+    color && styles[color],
+    { [styles.iconButton]: icon && !children },
   );
 
   return (
     <button className={buttonStyles} {...rest}>
-      {icon && <i className="gg-add-r"></i>}
+      {icon && <i className={`gg-${icon}`}></i>}
       { children }
     </button>
   )

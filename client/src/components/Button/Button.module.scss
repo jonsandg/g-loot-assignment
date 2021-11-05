@@ -1,5 +1,6 @@
-$base-color: #b6b6b6;
+$base-color: #aca1a1;
 $green-color: #00FF80;
+$red-color: #e65f73;
 
 .button {
   background-color: $base-color;
@@ -42,6 +43,22 @@ $green-color: #00FF80;
   }
 }
 
-.icon {
+.red {
+  background-color: $red-color;
+  color: rgb(252, 252, 252);
+  
+  &:hover,
+  &:focus {
+    background-color: darken($red-color, 10);  
+  }
+}
 
+.iconButton {
+  width: 40px;
+  height: 40px;
+  
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
 }
