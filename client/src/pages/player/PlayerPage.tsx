@@ -95,6 +95,7 @@ const PlayerPage = () => {
                   ref={nameInputRef}
                   onMounted={() => nameInputRef.current?.focus()}
                   onFocus={e => e.target.select()}
+                  onKeyUp={e => e.key === 'Enter' && onNewNameSubmit()}
                 />
                 <Button 
                   icon="check" 
@@ -123,15 +124,17 @@ const PlayerPage = () => {
         isOpen={modalIsOpen}
         onRequestClose={() => setModalIsOpen(false)}
         title="Delete Player"
-        actions={[
-          <Button 
-            color="red"
-            onClick={() => onDeletePlayerSubmit()}
-          >
-            Delete
-          </Button>,
-          <Button onClick={() => setModalIsOpen(false)}>Cancel</Button>
-        ]}
+        actions={(
+          <div>
+            <Button 
+              color="red"
+              onClick={() => onDeletePlayerSubmit()}
+            >
+              Delete
+            </Button>
+            <Button onClick={() => setModalIsOpen(false)}>Cancel</Button>
+          </div>
+        )}
       >
         {`Are you sure you wish to delete player ${player.name}?`}
       </Modal>

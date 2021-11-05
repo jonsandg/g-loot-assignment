@@ -67,16 +67,18 @@ const PlayersPage = () => {
         isOpen={modalIsOpen}
         onRequestClose={() => onCloseModal()}
         title="Add New Player"
-        actions={[
-          <Button 
-            color="green" 
-            disabled={!newPlayerName}
-            onClick={() => onNewPlayerSubmit()}
-          >
-            Add
-          </Button>,
-          <Button onClick={() => onCloseModal()}>Cancel</Button>
-        ]}
+        actions={(
+          <div>
+            <Button 
+              color="green" 
+              disabled={!newPlayerName}
+              onClick={() => onNewPlayerSubmit()}
+            >
+              Add
+            </Button>
+            <Button onClick={() => onCloseModal()}>Cancel</Button>
+          </div>
+        )}
       >
         <TextInput
           placeholder="Name"
@@ -84,6 +86,7 @@ const PlayersPage = () => {
           onChange={e => setNewPlayerName(e.target.value)}
           ref={newPlayerNameInputRef}
           onMounted={() => newPlayerNameInputRef.current?.focus()}
+          onKeyUp={e => e.key === 'Enter' && onNewPlayerSubmit()}
         />
       </Modal>
     </div>

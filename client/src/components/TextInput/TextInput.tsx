@@ -15,7 +15,7 @@ export const TextInput = React.forwardRef(({
 
   useEffect(() => {
     onMounted && onMounted();
-  }, []);
+  }, [onMounted]);
 
 
   const inputStyles = cn(

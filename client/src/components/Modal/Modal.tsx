@@ -1,5 +1,5 @@
 import React from 'react';
-import ReactModal, { Props } from 'react-modal';
+import ReactModal from 'react-modal';
 
 import styles from './Modal.module.scss';
 
@@ -9,7 +9,7 @@ interface ModalProps {
   isOpen: boolean;
   onRequestClose?(): any;
   children: React.ReactNode;
-  actions?: React.ReactChild[];
+  actions?: React.ReactNode;
   title?: string;
 }
 
